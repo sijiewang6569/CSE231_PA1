@@ -68,4 +68,38 @@ describe('run(source, config) function', () => {
   });
 
   // TODO: add additional tests here to ensure the compiler runs as expected
+  it('complex calcuation', async() => {
+    const result = await run("7 * 8 - 1 + 4 * 3 - 5", config);
+    expect(result).to.equal(62);
+  });
+
+  it('returns the absolute value of a positive  number', async() => {
+    const result = await run("abs(+7)", config);
+    expect(result).to.equal(7);
+  });
+
+  it('returns the absolute value of zero', async() => {
+    const result = await run("abs(-0)", config);
+    expect(result).to.equal(0);
+  });
+
+  it('returns the absolute value of a negative number', async() => {
+    const result = await run("abs(-9)", config);
+    expect(result).to.equal(9);
+  });
+
+  it('returns the minimum of two numbers', async() => {
+    const result = await run("min(1, -4)", config);
+    expect(result).to.equal(-4);
+  });
+
+  it('prints the maximum of two expressions', async() => {
+    const result = await run("max(0-1, 2+3)", config);
+    expect(result).to.equal(5);
+  });
+
+  it('prints the maximum of two expressions2', async() => {
+    const result = await run("max(abs(-9), 2+3)", config);
+    expect(result).to.equal(9);
+  });
 });

@@ -24,6 +24,20 @@ describe('traverseExpr(c, s) function', () => {
   })
 
   // TODO: add additional tests here to ensure traverseExpr works as expected
+  it('parses a negative number', () => {
+    const source = "-656";
+    const cursor = parser.parse(source).cursor();
+
+    // go to statement
+    cursor.firstChild();
+    // go to expression
+    cursor.firstChild();
+
+    const parsedExpr = traverseExpr(cursor, source);
+
+    // Note: we have to use deep equality when comparing objects
+    expect(parsedExpr).to.deep.equal({tag: "num", value: -656});
+  })
 });
 
 describe('traverseStmt(c, s) function', () => {
@@ -41,4 +55,8 @@ describe('parse(source) function', () => {
   });  
 
   // TODO: add additional tests here to ensure parse works as expected
+  it('parse a negative number', () => {
+    const parsed = parse("-656");
+    expect(parsed).to.deep.equal([{tag: "expr", expr: {tag: "num", value: -656}}]);
+  });
 });
