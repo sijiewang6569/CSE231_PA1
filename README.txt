@@ -8,12 +8,10 @@
         My complier currently only supports type "i32"
         May change the type of parameters and allow non-integer inputs in the future. 
 
-   
-   (c). My compiler can currently only support three binary operations, addition, subtraction and multiplication, 
-        and will throw an error message when applying binary division. 
-        Since the result of binary division could be non-integer, I don't considers this operation right now.
-        May change the type of return variable and implement binary division operation in the future.
 
+   (c). For example, abs(print(1)), my complier outputs "1\n1", but Python program can't run it. 
+        The type of return value of my print function is "i32", and it's a valid input for my abs opertion
+        May unpdate print function of my complier, let it print out the value immediately instead of returning it.
 
 2. What resources did you find most helpful in completing the assignment?
    Yousef's Tutorial. 
